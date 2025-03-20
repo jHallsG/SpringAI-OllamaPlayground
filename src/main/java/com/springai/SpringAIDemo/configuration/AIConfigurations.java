@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class AIConfigurations {
 	
 	// dont delete this. OllamaAPI should have already set localhost:11434 as the default value but somehow it results to
-	// embedding model NOT FOUND error
+	// embedding model NOT FOUND error unless explicitly stated
 	@Bean
 	public OllamaApi ollamaApi(){
 		return new OllamaApi("http://localhost:11434");
 	}
+	
 }

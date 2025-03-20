@@ -1,5 +1,10 @@
 package com.springai.SpringAIDemo.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.embedding.EmbeddingResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,9 +15,11 @@ import com.springai.SpringAIDemo.service.ChatService;
 public class GenerativeAIController {
 	
 	private final ChatService chatService;
+	private final EmbeddingModel embeddingModel;
 	
-	public GenerativeAIController(ChatService chatService) {
+	public GenerativeAIController(ChatService chatService, EmbeddingModel embeddingModel) {
 		this.chatService = chatService;
+		this.embeddingModel = embeddingModel;
 	}
 
 	@GetMapping("/askAI")
