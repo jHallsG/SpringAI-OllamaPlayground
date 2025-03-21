@@ -1,20 +1,35 @@
-This is a fun project created to practice on RAG (Retrieval Augmented Generation) using Java Springboot and Spring AI. The purpose is for the AI to generate it's answers from a specific PDF file. 
-It may be a whole book, an instruction manual, a documentation, etc. The AI does not choose.
+# RAG Project with Spring Boot & Spring AI  
 
-Requirements before running this code.
-1. Docker
-2. Ollama
+This is a fun project designed to practice **Retrieval-Augmented Generation (RAG)** using **Java Spring Boot** and **Spring AI**. The goal is for the AI to generate answers based on a specific **PDF file**, such as a book, instruction manual, or documentation. The AI does **not** choose the source—it strictly retrieves information from the provided document.  
 
-Docker is required as the app automatically creates two docker images, the PGVector Database and Ollama.
-Ollama is required as we need to download two things:
-    a) LLM Model
-        -- the chat model. If you are using a normal laptop or desktop, I recommend downloading "Llama3.1:8b". Anything higher will require a dedicated GPU and atleast 64GB of RAM.
-    b) Embedding Model
-        -- the PDF file's contents will be converted to numerical embeddings and saved to PGVector Database. Luckily, the embedding model will do that for us.
+## 🚀 Requirements  
 
-3. The application.properties need the following configuration:
-  spring.ai.ollama.chat.model                    --> the name of the AI model you've downloaded in Ollama
-  spring.ai.ollama.embedding.model               --> the name of the embedding model you'[ve downloaded in Ollama
-  spring.ai.vectorstore.pgvector.dimensions      --> each embedding model have their own dimensions. (768 for nomic, 1024 for mxbai...)
+Before running this project, ensure you have the following installed:  
 
-4. The PDF file. Copy any pdf file to "src/main/resources/docs". Edit the resource file in the DataLoader.class to point to the correct PDF file name.
+### 1. **Docker**  
+Docker is required because the app **automatically creates two Docker containers**:  
+- **PGVector Database** (for storing embeddings)  
+- **Ollama** (for running the AI models)  
+
+### 2. **Ollama**  
+Ollama is needed to download two essential models:  
+
+- **LLM Model** (for chat responses)  
+  - If you're using a regular laptop or desktop, **Llama3.1:8b** is recommended.  
+  - Models larger than 8b require a **dedicated GPU** and at least **64GB RAM**.  
+
+- **Embedding Model** (for processing the PDF contents)  
+  - Converts the PDF text into numerical embeddings, which are stored in the PGVector database.  
+
+## ⚙️ Configuration  
+
+Before running the application, update `application.properties` with the following settings:  
+
+```properties
+spring.ai.ollama.chat.model= # Name of the AI model downloaded in Ollama  
+spring.ai.ollama.embedding.model= # Name of the embedding model downloaded in Ollama  
+spring.ai.vectorstore.pgvector.dimensions= # Embedding model dimension (e.g., 768 for nomic, 1024 for mxbai)
+```
+## 📄 Adding a PDF File
+1. Copy your PDF file to : src/main/resources/docs
+2. Edit the DataLoader.class, Resource property to point to the correct PDF file name
