@@ -55,6 +55,8 @@ public class DataLoader {
 			// convert the texts to chunks
 			var chunks = splitter.apply(reader.get());
 			
+			logger.info("Uploading chunks to Vector Database. Please wait...");
+			
 			// feed the chunks to the vector_database
 			vectorStore.accept(chunks);
 

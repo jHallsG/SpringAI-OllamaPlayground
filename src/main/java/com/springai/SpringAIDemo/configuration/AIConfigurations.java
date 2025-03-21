@@ -13,5 +13,4 @@ public class AIConfigurations {
 	public OllamaApi ollamaApi(){
 		return new OllamaApi("http://localhost:11434");
 	}
-	
 }
